@@ -49,27 +49,41 @@ while True:
         nome= input("Nome do hóspede: ")
         idade=int(input('Idade do hóspede: '))
     
-    print("\n====QUARTOS DISPONIVEIS====")
-    for item in quartos:
-        if item["status"] == status_quartos[0]:
-            print(f"Quarto {item['num_quarto']} está {item['status']}")
+        print("\n====QUARTOS DISPONIVEIS====")
+        for item in quartos:
+            if item["status"] == status_quartos[0]:
+                print(f"Quarto {item['num_quarto']} está {item['status']}")
     
-    escolha = int(input("\nEscolha o quarto a ser hospedado: "))
-    for item in quartos:
-        if item["num_quarto"]== escolha:
-             item['nome_hospede'] = nome
-             item["idade_hospede"] = idade
-             item["status"] = status_quartos[1]
-             print(f"Quarto {item['num_quarto']} foi ocupado pelo hóspede: {item['nome_hospede']} e se encontra {item['status']} no momento.")
-             continue
+        escolha = int(input("\nEscolha o quarto a ser hospedado: "))
+        for item in quartos:
+            if item["num_quarto"]== escolha:
+                item['nome_hospede'] = nome
+                item["idade_hospede"] = idade
+                item["status"] = status_quartos[1]
+                print(f"Quarto {item['num_quarto']} foi ocupado pelo hóspede: {item['nome_hospede']} e se encontra {item['status']} no momento.")
+                continue
         
        # if escolha != item["num_quarto"]:
            # print("!ERROR! Escolha uma opção válida!")
            # continue
-    if resposta == 2:
+    elif resposta == "2":
+
         for item in quartos:
+            if item["status"] == status_quartos[0] or item["status"] == status_quartos[2]:
+                
+                print(f"O Quarto {item['num_quarto']} está {item['status']}")
+            
+            else:
+                print(f"O Quarto {item['num_quarto']} se encontra ocupado pelo hóspede: {item['nome_hospede']}")
 
-
+    elif resposta == "3":
+        for item in quartos:
+            if item["status"] == status_quartos[2]:
+                print(f"Quarto {item['num_quarto']}: Está {item['status']}. ")
+            
+            escolha = int(input('\n Escolha o quarto que deseja alterar: '))
+        if escolha == item['num_quarto']:
+            ...
     
 
 
@@ -89,9 +103,9 @@ while True:
 
 
 
-#[1] Realizar check-in → realizar_checkin()
-#[2] Exibir mapa de quartos → listar_quartos()
-#[3] Alterar status do quarto → atualizar_status()
-#[4] Realizar check-out → realizar_checkout()
-#[5] Liberar quarto após limpeza → liberar_quarto()
-#[0] Sair → salvar_dados()
+    #[1] Realizar check-in → realizar_checkin()
+    #[2] Exibir mapa de quartos → listar_quartos()
+    #[3] Alterar status do quarto → atualizar_status()
+    #[4] Realizar check-out → realizar_checkout()
+    #[5] Liberar quarto após limpeza → liberar_quarto()
+    #[0] Sair → salvar_dados()
